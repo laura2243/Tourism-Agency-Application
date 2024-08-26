@@ -1,0 +1,116 @@
+<mat-dialog-content class="form">
+
+
+
+    <div class="title">
+        <h3>{{titleText}}</h3>
+        <h1>DESTINATION</h1>
+    </div>
+
+    <div class="formWrapper">
+
+
+
+
+        <form [formGroup]="addDestinationForm" class="ng-pristine ng-invalid ng-touched" (ngSubmit)="onSubmit()">
+
+
+
+
+
+            <mat-form-field class="input">
+                <mat-label>Title</mat-label>
+                <input matInput placeholder="Title" formControlName="title">
+            </mat-form-field>
+
+            <mat-form-field class="input">
+                <mat-label>Location</mat-label>
+                <input matInput placeholder="Location" formControlName="location">
+            </mat-form-field>
+
+
+            <mat-form-field class="input">
+                <mat-label>Price per night</mat-label>
+                <input matInput type="number" min="0" placeholder="Price per night" formControlName="price">
+                <mat-error *ngIf="addDestinationForm.get('price')?.hasError('min')">
+                    Price cannot be negative
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="input">
+                <mat-label>Discount</mat-label>
+                <!-- <mat-select [(value)]="discount">
+                    <mat-option value="0">0%</mat-option>
+                    <mat-option value="5">5%</mat-option>
+                    <mat-option value="10">10%</mat-option>
+                
+                </mat-select> -->
+                <input matInput type="number" min="0" placeholder="Discount" formControlName="discount">
+                <mat-error *ngIf="addDestinationForm.get('discount')?.hasError('min')">
+                    Discount cannot be negative
+                </mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="input">
+                <mat-label>Available spots</mat-label>
+                <input matInput type="number" min="0" placeholder="Available spots" formControlName="available_spots">
+                <mat-error *ngIf="addDestinationForm.get('available_spots')?.hasError('min')">
+                    Available spots cannot be negative
+                </mat-error>
+            </mat-form-field>
+
+
+            <mat-form-field class="input">
+                <mat-label>Enter a date range</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                    <input matStartDate placeholder="MM/DD/YYYY - " formControlName="start_date">
+                    <input matEndDate placeholder="MM/DD/YYYY" formControlName="end_date">
+                </mat-date-range-input>
+                <!-- <mat-hint>MM/DD/YYYY - MM/DD/YYYY</mat-hint> -->
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker><input matInput type="datetime"
+                    placeholder="Choose a date">
+
+                <mat-error *ngIf="addDestinationForm.hasError('dateTimeComparison')">
+                    End date must be later or equal to start date
+                </mat-error>
+            </mat-form-field>
+
+
+
+
+
+            <div class="imageContainer">
+                <mat-form-field class="inputImage">
+                    <mat-label>Select a file</mat-label>
+                    <input matInput type="text" disabled [value]="coverImgFileName || 'Choose an image'"
+                        [matTooltip]="coverImgFileName" [required]="false">
+                    <mat-icon matSuffix (click)="fileInput.click()" style="cursor: pointer">attach_file</mat-icon>
+                    <input #fileInput type="file" (change)="onFileSelected($event)" style="display: none;">
+
+                    <img *ngIf="imageSelected" src={{this.showImg}} class="image">
+                </mat-form-field>
+
+            </div>
+
+
+            <mat-form-field class="inputDescription">
+                <mat-label>Description</mat-label>
+                <textarea matInput placeholder="Description" formControlName="description"></textarea>
+            </mat-form-field>
+
+
+
+
+            <button type="submit" [disabled]='addDestinationForm.invalid'>{{buttonText}}</button>
+
+        </form>
+
+
+    </div>
+    <!-- <mat-dialog-actions>
+        <button (click)="closeDialog()">Cancel</button>
+        
+    </mat-dialog-actions> -->
+
+</mat-dialog-content>

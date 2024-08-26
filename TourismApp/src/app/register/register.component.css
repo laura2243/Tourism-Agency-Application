@@ -1,0 +1,337 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/************************************************** Title*********************************************************/
+.title {
+    margin-top: 3%;
+    margin-left: 20%;
+}
+
+h3 {
+    color: #fff;
+    margin: 8% 2% -35px;
+    font-style: italic;
+    font-weight: 100;
+    font-size: 26px;
+    letter-spacing: 1px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+h1 {
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 140px;
+    letter-spacing: 15px;
+    opacity: 0.6;
+    background-image: linear-gradient(45deg, #000, #fff, #817f7f, #fff, #000);
+    background-size: 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent !important;
+
+
+}
+
+
+/************************************************** Nav Bar *********************************************************/
+body {
+
+    background-image: url(../../assets/back.jpg);
+    background-position: 0;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+
+}
+
+.glass {
+    width: 80vw;
+    height: 90vh;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 1);
+    background-image: url(../../assets/front.jpg);
+    /* background-position: center; */
+    /* background-size: contain; */
+    background-repeat: no-repeat;
+    overflow: auto;
+    background-size: 80vw 90vh;
+    display: flex;
+
+
+}
+
+nav {
+    display: flex;
+    padding: 2% 5%;
+    background-image: inherit;
+    /* background-image: inherit (180deg, blue 0%, rgba(255, 255, 255, 0) 10%); */
+    background-size: 80vw 90vh;
+    background-repeat: space;
+    position: fixed;
+    z-index: 10;
+    width: 80vw;
+    cursor: pointer;
+    height: 5px;
+
+}
+
+.glass::-webkit-scrollbar {
+    display: none;
+}
+
+.logo {
+    font-size: 40px;
+    color: #fff;
+    top: -10px;
+    position: relative;
+
+
+}
+
+nav ul {
+    flex: 1;
+    text-align: right;
+
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 3%;
+    transition: 0.1s ease-out;
+}
+
+nav ul li:hover {
+    border-bottom: 2px solid #fff;
+
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 22px;
+    color: #fff;
+    font-weight: bold;
+}
+
+nav ul {
+    flex: 1;
+    text-align: right;
+    position: relative;
+    /* add this line */
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 3%;
+    transition: 0.1s ease-out;
+    position: relative;
+    /* add this line */
+}
+
+nav ul li ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 120%;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s;
+}
+
+nav ul li:hover ul {
+    visibility: visible;
+    opacity: 1;
+}
+
+nav ul li ul li {
+    display: block;
+    /* margin: 0; */
+    margin: 12px 0;
+    text-align-last: left;
+}
+
+
+
+/************************************************** Login Form *********************************************************/
+
+
+.formWrapper {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2%;
+
+    position: absolute;
+    width: 40%;
+    height: 60%;
+    margin-left: 19%;
+    margin-top: 15%;
+
+}
+
+
+
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white !important;
+    /* background-color: rgba(255, 255, 255, 0.2) !important; */
+    /* background-color: rgba(0, 0, 0, 0.2) !important; */
+        /* border: 2px solid #fff; */
+    /* border-radius: 10px; */
+    /* box-shadow: 0 1px 8px rgba(255, 255, 255, 0.8); */
+    transition: transform 0.3s;
+
+    width: 100%;
+    height: 100%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+
+}
+
+.form form {
+    color: white !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.input {
+    cursor: pointer;
+    color: white !important;
+    border: none;
+    border-radius: 10px;
+    background-color: transparent;
+    padding-top: 3%;
+    width: 20vw !important;
+    height: 10vh !important;
+    border-radius: 5px !important;
+  
+}
+
+
+
+
+.form form button {
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+    background-color: rgb(36, 125, 72);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    display: flex;
+    width: 20vw;
+    margin-bottom: 2%;
+    box-shadow: 0 1px 8px rgba(36, 125, 72, 0.8);
+    margin-top: 7%;
+
+
+}
+
+.form form button:hover {
+    background-color: rgb(28, 95, 55);
+
+}
+
+
+::ng-deep .form form .mdc-text-field {
+    background-color: rgba(0, 0, 0, 0.4) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 1px 8px rgba(255, 255, 255, 0.8);
+    font-family: Verdana, Geneva, Tahoma, sans-serif !important;
+}
+
+::ng-deep .form form .mat-mdc-input-element {
+    color: whitesmoke !important;
+}
+
+::ng-deep .mat-mdc-input-element {
+    color: whitesmoke !important;
+}
+
+::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-text-field__input {
+    color: whitesmoke !important;
+
+}
+
+::ng-deep .mdc-notched-outline>* {
+
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-top: transparent !important;
+    border-bottom: whitesmoke !important;
+    border-color: whitesmoke !important;
+    border-width: 0.15em !important;
+
+}
+
+::ng-deep .mdc-text-field--focused .mdc-notched-outline>* {
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-top: transparent !important;
+    border-bottom: whitesmoke !important;
+    border-color: whitesmoke !important;
+}
+
+::ng-deep .mdc-text-field--invalid .mdc-notched-outline>* {
+    border-left: transparent !important;
+    border-right: transparent !important;
+    border-top: transparent !important;
+    border-bottom: whitesmoke !important;
+    border-color: red !important;
+}
+
+::ng-deep .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+    color: whitesmoke !important;
+   
+}
+
+::ng-deep .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+    color: whitesmoke !important;
+   
+}
+
+
+
+::ng-deep .mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label {
+    color: red !important;
+    
+}
+
+
+
+.registerLabel {
+    color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2%;
+
+}
+
+form a {
+    color: rgb(95, 180, 129) !important;
+}
+
+.alertLabel {
+    color: rgb(218, 75, 75);
+}
+

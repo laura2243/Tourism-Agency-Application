@@ -1,0 +1,90 @@
+<body>
+    <div class="glass">
+        <nav>
+            <h2 class="logo">T||A</h2>
+            <ul>
+                <li><a (click)="backClicked()"><span class="material-symbols-outlined">
+                            close
+                        </span></a>
+
+                </li>
+            </ul>
+        </nav>
+
+
+        <div class="title">
+            <h3>Voyager's Vault</h3>
+            <h1>VIEW RESERVATIONS</h1>
+        </div>
+
+        <div class="content">
+
+            <div id="tableDiv">
+
+                <table id="table">
+                    <tr class="headerTable">
+                        <th>User name</th>
+                        <th>Start date</th>
+                        <th>End date</th>
+                        <th>Reservation date</th>
+                        <th>Number of booked spots</th>
+                        <th>Total Price</th>
+
+                    </tr>
+                    <tr *ngFor="let reservation of reservations" class="rowsTable">
+                        <td>{{reservation.user_id| titlecase}}</td>
+                        <td>{{reservation.start_date|titlecase}}</td>
+                        <td>{{reservation.end_date|titlecase}}</td>
+                        <td>{{reservation.reservation_date|titlecase}}</td>
+                        <td>{{reservation.nr_spots}}</td>
+                        <td>{{reservation.total_price}} $</td>
+
+                    </tr>
+                </table>
+            </div>
+
+            <div class="calendarAndStatistics">
+
+                <div class="wrapper">
+                    <header>
+                        <p class="current-date"></p>
+                        <div class="icons">
+                            <span id="prev" class="material-symbols-rounded">chevron_left</span>
+                            <span id="next" class="material-symbols-rounded">chevron_right</span>
+                        </div>
+                    </header>
+                    <div class="calendar">
+                        <ul class="weeks">
+                            <li>Sun</li>
+                            <li>Mon</li>
+                            <li>Tue</li>
+                            <li>Wed</li>
+                            <li>Thu</li>
+                            <li>Fri</li>
+                            <li>Sat</li>
+                        </ul>
+                        <ul class="days">
+
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div id="chart">
+                    <apx-chart [colors]="chartOptions.colors  ? chartOptions.colors : []"
+                        [fill]="chartOptions.fill  ? chartOptions.fill : {}"
+                        [series]="chartOptions.series ? chartOptions.series : []"
+                        [chart]="chartOptions.chart ? chartOptions.chart : { type: 'line' }"
+                        [xaxis]="chartOptions.xaxis ? chartOptions.xaxis : {}"
+                        [stroke]="chartOptions.stroke ? chartOptions.stroke : {}"
+                        [tooltip]="chartOptions.tooltip ? chartOptions.tooltip : {}"
+                        [dataLabels]="chartOptions.dataLabels ? chartOptions.dataLabels : {}"></apx-chart>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+</body>

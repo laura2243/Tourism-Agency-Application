@@ -1,0 +1,46 @@
+<div class="dialog" *ngIf="data.onPasswordChange">
+    <mat-dialog-content class="mat-typography">
+        <h3>{{data.content}}</h3>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close (click)="onOkClick(data.content)">Ok</button>
+    </mat-dialog-actions>
+</div>
+
+
+<div class="dialog" *ngIf="data.onLogout">
+
+    <mat-dialog-content class="mat-typography">
+        <h3>{{data.content}}</h3>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button mat-button color="warn" mat-dialog-close cdkFocusInitial (click)="logout()">Log out</button>
+    </mat-dialog-actions>
+</div>
+
+
+<div class="dialog" *ngIf="data.onDeleteUser">
+
+    <mat-dialog-content class="mat-typography">
+        <h3>{{data.content}}</h3>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+        <button mat-button color="warn" mat-dialog-close cdkFocusInitial (click)="deleteUser('yes')">Yes</button>
+        <button mat-button mat-dialog-close>No</button>
+    </mat-dialog-actions>
+</div>
+
+<div class="dialog" *ngIf="data.onDeleteEvent">
+
+    <mat-dialog-content class="mat-typography">
+        <h3>{{data.content}}</h3>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="center">
+        <button mat-button color="primary" mat-dialog-close>Ok</button>
+    </mat-dialog-actions>
+</div>

@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>TourismApp</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-**********" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="glass">
+    <nav>
+      <h2 class="logo">T||A</h2>
+      <ul>
+        <li><a (click)="scrollToHome()">HOME</a></li>
+        <li><a (click)="scrollToAboutUs()">ABOUT</a></li>
+        <li><a (click)="scrollToAllDestinations()">BOOKINGS</a>
+          <ul>
+            <li>
+              <a (click)="scrollToOffers()">OFFERS</a>
+            </li>
+          </ul>
+        </li>
+        <li><a (click)="scrollToContact()">CONTACT</a></li>
+        <li *ngIf="!loggedUser"><a href="login">SIGN IN</a>
+          <ul>
+            <li>
+              <a href="register">SIGN UP</a>
+            </li>
+          </ul>
+        </li>
+        <li *ngIf="currentUserRole == 'CLIENT' || currentUserRole == 'ADMIN' "><a  (click)="logOut()">LOG OUT</a></li>
+
+      </ul>
+    </nav>
+
+    <div class="scrollToHome" #scrollToHomeTarget></div>
+    <div class="title">
+      <h3>it's time to</h3>
+      <h1>TRAVEL</h1>
+    </div>
+
+
+    <div class="searchFilter">
+      <span class="material-symbols-outlined">
+        search
+      </span>
+      <input type="search" placeholder="Discover your destination..." [(ngModel)]="searchQuery"
+        (keyup.enter)="filterDestinations()" #input>
+    </div>
+
+
+
+
+
+    <div class="scrollToAboutUs" #scrollToAboutUsTarget> </div>
+    <div class="scrollToAboutUs"></div>
+    <div class="titleSectionAboutUs">
+
+      <h1>Who are we?</h1>
+      <h3>With a touch of mystique and a dash of curiosity, we are specialized in crafting unforgettable journeys into
+        the unknown. Step into our realm and discover hidden gems, mystical landscapes, and untold tales waiting to be
+        explored.
+      </h3>
+      <h3>
+        Let us be your guide to adventure, as we unveil the mysteries of the world, one destination at a
+        time...
+      </h3>
+    </div>
+
+
+
+
+
+
+    <div class="scrollToOffers" #scrollToOffersTarget></div>
+    <section id="sectionOffers">
+      <div class="scrollToOffers"></div>
+      <div class="sectionOffers">
+
+        <div class="titleSectionOffers">
+          <h3>discover our</h3>
+          <h1>OFFERS</h1>
+        </div>
+        <!-- 
+
+
+      <mat-form-field class="datePicker" appearance="outline">
+        <mat-label>Enter a date range</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input matStartDate placeholder="MM/DD/YYYY - ">
+          <input matEndDate placeholder="MM/DD/YYYY">
+        </mat-date-range-input>
+
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field> -->
+
+        <div class="card-container-wrapper">
+          <div id="card-container-offers" class="card-container">
+            <div class="card" *ngFor="let offerDestination of offerDestinations"
+              [ngClass]="{'no-spots': offerDestination.available_spots == 0 && currentUserRole == 'CLIENT'}">
+              <img [src]="'data:image/jpeg;base64,'+offerDestination.image_data" alt="Destination Image">
+
+
+              <span class="sale">-{{offerDestination.discount}}%</span>
+              <h2 class="info">{{ offerDestination.title }}</h2>
+              <p class="info">Date: {{offerDestination.start_date}} - {{offerDestination.end_date}}</p>
+              <p class="info">Location: {{ offerDestination.location }}</p>
+              <p>Price:
+                <span class="beforePrice"> ${{ offerDestination.price }} </span>
+                <span class="afterPrice"> {{'&nbsp;'}} ${{ offerDestination.price! - (offerDestination.price! *
+                  offerDestination.discount! / 100) }} </span>
+              </p>
+              <p class="info">Available spots: {{ offerDestination.available_spots }}</p>
+              <p class="info">Description: {{ offerDestination.description }}</p>
+              <button *ngIf="currentUserRole == 'CLIENT' || currentUserRole == 'ADMIN' "
+                (click)="currentUserRole == 'CLIENT' ?   openReservationDialog(offerDestination) : goToStatsPage(offerDestination)">{{buttonText}}</button>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <div class="scrollToAllDestinatins" #scrollToAllDestinationsTarget></div>
+    <section id="sectionAll">
+      <div class="sectionAll">
+        <div class="titleSectionAll">
+          <h3>unveil all your</h3>
+          <h1>POSSIBILITIES</h1>
+        </div>
+
+        <div class="dateAndButton">
+          <mat-form-field class="datePicker" appearance="outline">
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate placeholder="MM/DD/YYYY - " (dateChange)="startDatePicker.next($event)" readonly>
+              <input matEndDate placeholder="MM/DD/YYYY" (dateChange)="endDatePicker.next($event)" readonly>
+            </mat-date-range-input>
+            <!-- <mat-hint>MM/DD/YYYY - MM/DD/YYYY</mat-hint> -->
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+
+          <button *ngIf="isUserAdmin()" class="addDestButton" (click)="openDialogAdd('add')">Add destination</button>
+        </div>
+
+
+
+
+        <div class="card-container-wrapper">
+          <div  id="card-container" class="card-container">
+
+
+
+            <div class="card" *ngFor="let destination of (searchedDestination ? filteredDestinations : destinations)"
+              [ngClass]="{'no-spots': destination.available_spots == 0 && currentUserRole == 'CLIENT'}">
+
+
+              <img [src]="'data:image/jpeg;base64,'+destination.image_data" alt="Destination Image">
+              <span *ngIf="destination.discount !== 0" class="sale">-{{destination.discount}}%</span>
+              <h2 class="info">{{ destination.title }}</h2>
+              <p class="info">Date: {{destination.start_date}} - {{destination.end_date}}</p>
+              <p class="info">Location: {{ destination.location }}</p>
+              <span [ngClass]="{'beforePrice': destination.discount > 0, 'info': destination.discount === 0}">price: ${{
+                destination.price }}</span>
+              <!-- Check if the discount is not equal to 0 -->
+              <ng-container *ngIf="destination.discount !== 0">
+
+                <!-- Calculate and display the discounted price -->
+                <span class="afterPrice">
+                  &nbsp; ${{ destination.price - (destination.price * destination.discount / 100) }}
+                </span>
+              </ng-container>
+              <p class="info">Available spots: {{ destination.available_spots }}</p>
+              <p class="info">Description: {{ destination.description }}</p>
+
+
+
+              <i *ngIf="isUserAdmin()" class="material-icons delete-icon" (click)="open(destination)">delete</i>
+              <button *ngIf="currentUserRole == 'CLIENT' || currentUserRole == 'ADMIN' "
+                (click)="currentUserRole == 'CLIENT' ?   openReservationDialog(destination) : goToStatsPage(destination)">{{buttonText}}</button>
+              <i *ngIf="isUserAdmin()" class="material-icons edit-icon"
+                (click)="openDialogUpdate('update',destination)">edit</i>
+
+
+
+            </div>
+          </div>
+
+        </div>
+        <div class="noDestinationsFound" *ngIf="showTextNoDestinationFound">
+          <h3> No destinations Available for </h3>
+          <h1>{{ searchQuery }}</h1>
+
+
+        </div>
+
+        <div class="noDestinationsFound" *ngIf="showTextNoDateFound">
+          <h3> No destinations Available this date </h3>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <div class="scrollToContact" #scrollToContactTarget></div>
+    <section id="sectionContact">
+      <div class="sectionContact">
+        <div class="titleSectionContact">
+          <h3>lost in wonder?</h3>
+          <h1>Let us guide you.</h1>
+        </div>
+      </div>
+
+
+
+      <div class="formWrapper">
+        <div class="form">
+
+          <form [formGroup]="contactForm" class="ng-pristine ng-invalid ng-touched">
+
+            <mat-form-field class="input">
+              <mat-label>Your email*</mat-label>
+              <input type="text" matInput formControlName="email">
+            </mat-form-field>
+
+            <mat-form-field class="inputContent">
+              <mat-label>What can we help you with?*</mat-label>
+              <input matInput formControlName="content">
+            </mat-form-field>
+
+            <button>Send</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+
+
+    <div class="horizontal-line"></div>
+    <div class="contact-section">
+
+
+      <p><i class="fas fa-map-marker-alt"></i> Location: Technical University of Cluj-Napoca</p>
+      <p><i class="far fa-envelope"></i> Email: laura_2243&#64;yahoo.com</p>
+      <p><i class="fas fa-phone"></i> Phone: +40727744314</p>
+
+
+
+      <ul class="social-media-icons">
+        <p>Follow Us:</p>
+        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+      </ul>
+    </div>
+  </div>
+
+
+
+</body>
+
+</html>

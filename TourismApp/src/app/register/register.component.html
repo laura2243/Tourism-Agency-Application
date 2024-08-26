@@ -1,0 +1,83 @@
+<body>
+    <div class="glass">
+        <nav>
+            <h2 class="logo">T||A</h2>
+            <ul>
+                <!-- <li><a (click)="scrollToHome()">HOME</a></li>
+        <li><a (click)="scrollToAboutUs()">ABOUT</a></li>
+        <li><a (click)="scrollToAllDestinations()">BOOKINGS</a>
+          <ul>
+            <li>
+              <a (click)="scrollToOffers()">OFFERS</a>
+            </li>
+          </ul>
+        </li>
+        <li><a (click)="scrollToContact()">CONTACT</a></li> -->
+                <li><a>SIGN IN</a>
+                    <ul>
+                        <li>
+                          <a href="register">SIGN UP</a>
+                        </li>
+                      </ul>
+                </li>
+            </ul>
+        </nav>
+
+
+        <div class="title">
+            <h3>Begin Your Journey</h3>
+            <h1>REGISTER</h1>
+        </div>
+
+
+
+        <div class="formWrapper">
+            <div class="form" >
+
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="ng-pristine ng-invalid ng-touched">
+
+
+                    <mat-form-field class="input">
+                        <mat-label>Full name</mat-label>
+                        <input type="text" matInput formControlName="name">
+                    </mat-form-field>
+
+                    <mat-form-field class="input">
+                        <mat-label>Email</mat-label>
+                        <input type="text" matInput formControlName="email">
+                    </mat-form-field>
+
+                    <mat-form-field class="input">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput formControlName="password">
+                    </mat-form-field>
+
+                    <mat-form-field class="input">
+                        <mat-label>Repeat Password</mat-label>
+                        <input type="password" matInput formControlName="passwordRepeat">
+                    </mat-form-field>
+                 
+
+                    <div class="text-center mt-3 " *ngIf='!passwordsMatch'>
+                        <p class="alertLabel">Passwords do not match!*</p>
+                    </div>
+
+                    <div class="text-center mt-3 " *ngIf='usernameExists'>
+                        <p class="alertLabel">Username already exists!*</p>
+                    </div>
+
+                    <button>REGISTER</button>
+
+                    <mat-label class="registerLabel">Already have an account ?
+
+                        <a href="login">
+
+                            Login
+                        </a>
+                    </mat-label>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</body>

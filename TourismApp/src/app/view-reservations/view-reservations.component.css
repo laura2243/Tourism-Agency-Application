@@ -1,0 +1,407 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/************************************************** Title*********************************************************/
+.title {
+    margin-top: 4%;
+    /* margin-left: 20%; */
+}
+
+h3 {
+    color: #fff;
+    margin: 3% 0 -10px;
+    font-style: italic;
+    font-weight: 100;
+    font-size: 26px;
+    letter-spacing: 1px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+h1 {
+    color: #fff;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 70px;
+    letter-spacing: 5px;
+    opacity: 0.6;
+    background-image: linear-gradient(45deg, #222121, #fff, #817f7f, #fff, #817f7f);
+    background-size: 100%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent !important;
+
+
+}
+
+
+/************************************************** Nav Bar *********************************************************/
+body {
+
+    background-image: url(../../assets/back.jpg);
+    background-position: 0;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(2px);
+
+}
+
+.glass {
+    width: 80vw;
+    height: 90vh;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 1);
+    background-image: url(../../assets/front.jpg);
+    /* background-position: center; */
+    /* background-size: contain; */
+    background-repeat: no-repeat;
+    overflow: auto;
+    background-size: 80vw 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+}
+
+nav {
+    display: flex;
+    padding: 2% 5%;
+    background-image: inherit;
+    /* background-image: inherit (180deg, blue 0%, rgba(255, 255, 255, 0) 10%); */
+    background-size: 80vw 90vh;
+    background-repeat: space;
+    position: fixed;
+    z-index: 10;
+    width: 80vw;
+    cursor: pointer;
+    height: 5px;
+
+}
+
+.glass::-webkit-scrollbar {
+    display: none;
+}
+
+.logo {
+    font-size: 40px;
+    color: #fff;
+    top: -10px;
+    position: relative;
+
+
+}
+
+nav ul {
+    flex: 1;
+    text-align: right;
+    right: 0;
+
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 ;
+    transition: 0.1s ease-out;
+}
+
+nav ul li:hover {
+    border-bottom: 2px solid #fff;
+
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 22px;
+    color: #fff;
+    font-weight: bold;
+    right: 0    ;
+}
+
+.material-symbols-outlined{
+    font-size: 40px;
+}
+
+nav ul {
+    flex: 1;
+    text-align: right;
+    position: relative;
+    /* add this line */
+}
+
+nav ul li {
+    list-style: none;
+    display: inline-block;
+    /* margin: 0 3%; */
+    transition: 0.1s ease-out;
+    position: relative;
+    /* add this line */
+}
+
+nav ul li ul {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 120%;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s, opacity 0.3s;
+}
+
+nav ul li:hover ul {
+    visibility: visible;
+    opacity: 1;
+}
+
+nav ul li ul li {
+    display: block;
+    /* margin: 0; */
+    margin: 12px 0;
+    text-align-last: left;
+}
+
+
+
+/* Table */
+#table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 1);
+
+
+}
+
+#table td,
+#table th {
+    border: 2px solid transparent;
+    padding: 8px;
+
+}
+
+#table .rowsTable {
+    color: #ddd;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px) saturate(180%) !important;
+}
+
+
+
+
+
+#table .headerTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: rgba(23, 82, 46, 0.6) !important;
+    backdrop-filter: blur(5px) saturate(180%) !important;
+
+    color: white;
+}
+
+#table td {
+    text-align: center;
+}
+
+.clickedRow {
+    background-color: rgba(113, 217, 140, 0.5) !important;
+}
+
+
+#tableDiv {
+    margin-top: 3%;
+    max-height: 120px !important;
+    height: 120px !important;
+    overflow: auto !important;
+    scrollbar-color: rgb(23, 82, 46) !important;
+    scrollbar-width: thin !important;
+    ;
+
+
+}
+
+
+.calendarAndStatistics {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+}
+
+.content {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+/* CALENDAR */
+
+.wrapper {
+
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 3%;
+    width: 450px;
+    height: 358px;
+    /* background-color: rgba(23, 82, 46, 0.6) !important;
+    backdrop-filter: blur(5px) saturate(180%) !important; */
+
+    box-shadow: 0 0 8px rgba(255, 255, 255, 1);
+    color: whitesmoke;
+}
+
+.wrapper header {
+
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    padding: 25px 30px 10px;
+    justify-content: space-between;
+    background-color: rgba(23, 82, 46, 0.6) !important;
+    backdrop-filter: blur(5px) saturate(180%) !important;
+}
+
+header .icons {
+    display: flex;
+}
+
+header .icons span {
+    height: 38px;
+    width: 38px;
+    margin: 0 1px;
+    cursor: pointer;
+    color: whitesmoke;
+    text-align: center;
+    line-height: 38px;
+    font-size: 1.9rem;
+    user-select: none;
+    border-radius: 50%;
+}
+
+.icons span:last-child {
+    margin-right: -10px;
+}
+
+header .icons span:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px) saturate(180%) !important;
+
+}
+
+header .current-date {
+    font-size: 1.45rem;
+    font-weight: 500;
+}
+
+.calendar {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px) saturate(180%) !important;
+    padding: 20px;
+    height: 70%;
+}
+
+.calendar ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    text-align: center;
+}
+
+.calendar .days {
+    margin-bottom: 20px;
+
+}
+
+.calendar li {
+    color: whitesmoke;
+    width: calc(100% / 7);
+    font-size: 1.07rem;
+
+}
+
+.calendar .weeks li {
+    font-weight: 500;
+    cursor: default;
+
+}
+
+.calendar .days li {
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+    margin-top: 20px;
+
+}
+
+.days li.inactive {
+    color: #aaa;
+}
+
+.days li.active {
+    color: #fff;
+}
+
+.days li::before {
+    position: absolute;
+    content: "";
+    left: 50%;
+    top: 50%;
+    height: 40px;
+    width: 40px;
+    z-index: -1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.days li.active::before {
+    /* background-color: rgba(0, 0, 0, 0.5); */
+
+    background-color: rgba(23, 82, 46, 0.7) !important;
+    /* backdrop-filter: blur(5px) saturate(180%) !important; */
+
+}
+
+
+#chart {
+    width: 50%;
+    height: 128%;
+    margin-top: 3%;
+    margin-left: 13%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px) saturate(180%) !important;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 1);
+
+}
+
+text {
+    color: red !important;
+    fill: white !important;
+}
+
+.apexcharts-toolbar {
+    display: none !important;
+}
+
+
+
+#tabelDiv::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+div::-webkit-scrollbar:vertical {
+    width: 11px;
+    background-color: rgb(233, 245, 233) !important
+}
+
+::ng-deep div::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    border: 2px solid rgb(233, 245, 233) !important;
+    /* should match background, can't be transparent */
+    background-color: rgba(0, 0, 0, .5) !important;
+}

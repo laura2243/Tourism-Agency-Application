@@ -1,0 +1,102 @@
+<head>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+</head>
+
+<body>
+  <div class="glass">
+    <nav>
+      <h2 class="logo">T||A</h2>
+      <ul>
+        <!-- <li><a (click)="scrollToHome()">HOME</a></li>
+        <li><a (click)="scrollToAboutUs()">ABOUT</a></li>
+        <li><a (click)="scrollToAllDestinations()">BOOKINGS</a>
+          <ul>
+            <li>
+              <a (click)="scrollToOffers()">OFFERS</a>
+            </li>
+          </ul>
+        </li>
+        <li><a (click)="scrollToContact()">CONTACT</a></li> -->
+        <!-- <li><a>SIGN IN</a>
+          <ul>
+            <li>
+              <a href="register">SIGN UP</a>
+            </li>
+          </ul>
+        </li> -->
+        <li><a (click)="backClicked()"><span class="material-symbols-outlined">
+              close
+            </span></a>
+
+        </li>
+      </ul>
+    </nav>
+
+
+    <div class="title">
+      <h3>Unlock Your Adventure</h3>
+      <h1>LOGIN</h1>
+    </div>
+
+
+
+    <div class="formWrapper">
+      <div class="form">
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="ng-pristine ng-invalid ng-touched">
+
+
+          <mat-form-field class="input">
+            <mat-label>Your email</mat-label>
+            <input type="text" matInput formControlName="email">
+            <!-- <span class="material-symbols-outlined">
+              person
+            </span> -->
+          </mat-form-field>
+
+          <mat-form-field class="input">
+            <mat-label>Password</mat-label>
+
+            <input type="password" matInput formControlName="password">
+            <!-- <span class="material-symbols-outlined" (click)="hiddenPwd=!hiddenPwd" *ngIf="!hiddenPwd">
+              visibility
+            </span>
+
+            <span class="material-symbols-outlined" (click)="hiddenPwd=!hiddenPwd" *ngIf="hiddenPwd">
+              visibility_off
+            </span> -->
+
+
+          </mat-form-field>
+
+          <div *ngIf="
+          !userFound">
+            <p class="alertLabel">Incorrect username or password!*</p>
+          </div>
+
+          <button type="submit" [disabled]='loginForm.invalid'>LOGIN</button>
+
+          <mat-label class="registerLabel"> Don't have an account yet?
+
+            <a href="register">
+
+              Sign up
+            </a>
+          </mat-label>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</body>
